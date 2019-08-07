@@ -1,0 +1,201 @@
+<!-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %> -->
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Foodie</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id"
+     content="45203154391-dsgauq9uqk7scgl8dv3256ki81m0sc7u.apps.googleusercontent.com">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+  $(document).ready(function () {
+    if (localStorage.getItem('ID').length !== 0) {
+      window.location.replace("../loggedin.html");
+    }
+  });
+</script>
+
+</head>
+<body style="background-color:orange;">
+
+<div class="row">
+<div class="container col-md-12">
+	
+	
+<h1 align="center">Welcome To The Foodie Services</h1>
+</div>
+</div>
+<div class="row">
+<div class="container" style="padding-top: 20px;">
+  
+  <h3 style = "text-align:center; font-weight:bold">Reserve tables in your favorite hotels!!</h3>
+  <h3 style = "text-align:center;font-weight:bold">Give us your location and budget category and we will book table in choice of your hotel.</h3>
+  <!-- <h3 style = "text-align:center;font-weight:bold">Some of the accommodations that we can help you with.</h3> -->
+  <h1 style = "text-align:center;font-weight:bold">Some of the top hotels with whom we have tie up so you can get better services and benefits</h1>
+ 
+  <div class="col-md-4">
+    <div class="thumbnail">
+      
+        <img src="../images/tajmahal.jpg" width="400" height="200">
+        <div class="caption">
+          <p>Hotel Taj</p>
+        </div>
+      
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+    
+         <img src="../images/JW.jpg" width="400" height="200">
+        <div class="caption">
+          <p>JW marriot</p>
+        </div>
+     
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      
+         <img src="/images/Hilton.jpg" width="400 px" height="200 px">
+        <div class="caption">
+          <p><em>Hilton<em></p>
+        </div>
+      
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      
+         <img src="/images/hotel-three-star.jpg" width="400 px" height="200 px">
+        <div class="caption">
+          <p>hotel-three-star</p>
+        </div>
+      
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      
+         <img src="/images/Lalit.jpg" width="400 px" height="200 px">
+        <div class="caption">
+          <p>Lalit</p>
+        </div>
+      
+    </div>
+  </div>
+   
+  <div class="col-md-4">
+    <div class="thumbnail">
+      
+         <img src="/images/Marine plaza.jpg" width="400 px" height="200 px">
+        <div class="caption">
+          <p>Marine plaza</p>
+        </div>
+      
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      
+         <img src="/images/Novotel.jpg" width="400 px" height="200 px">
+        <div class="caption">
+          <p>Novotel</p>
+        </div>
+      
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="thumbnail">
+      
+         <img src="/images/Trident.jpg" width="400 px" height="200 px">
+        <div class="caption">
+          <p>Trident</p>
+        </div>
+      
+    </div>
+  </div>
+
+</div>
+</div>
+<div class ="row">
+<div class = "container">
+<div class="col-md-12 text-center">
+
+<a href="/adminlogin.html">Admin Login</a>
+
+<!-- <% 
+String check=(String)session.getAttribute("loggedin");
+//out.println(check);
+if(check=="yes")
+{
+	out.println("You are logged in");
+	String link1 = "<a href=\"/logout.jsp\">Click Here To Logout</a>";
+	out.println(link1);
+}
+else if(check=="no" || check==null)
+{
+	//out.println("You are not logged in");
+	String link = "<h2><a href=\"/login.jsp\">Click Here To Login</a></h2>";
+	out.println(link);
+}
+
+
+//String a=(String)request.getParameter("loggedin");
+//out.println(a);
+//out.println("It is damn "+a);
+%> -->
+
+</div>
+</div>
+</div>
+
+<div class ="row">
+<div class = "container">
+<h2 style = "text-align:center;">Or Log In with Google</h2>
+	<div class="col-md-12 text-center g-signin2" data-onsuccess="onSignIn" style="text-align:center;">
+	</div>
+
+	<script>
+	function onSignIn(googleUser) {
+      var profile = googleUser.getBasicProfile();
+      console.log('ID: ' + profile.getId());
+      localStorage.setItem('ID', profile.getId())
+      console.log('Name: ' + profile.getName());
+      localStorage.setItem('Name', profile.getName())
+      console.log('Image URL: ' + profile.getImageUrl());
+      localStorage.setItem('Image URL', profile.getImageUrl())
+      console.log('Email: ' + profile.getEmail());
+      localStorage.setItem('Email', profile.getEmail())
+      console.log('id_token: ' + googleUser.getAuthResponse().id_token);
+      localStorage.setItem('id_token', googleUser.getAuthResponse().id_token);
+
+      var redirectUrl = 'login';
+      var form = $('<form action="' + redirectUrl + '" method="post">' +
+                          '<input type="text" name="id_token" value="' +
+                           googleUser.getAuthResponse().id_token + '" />' +
+                                                                '</form>');
+      $('body').append(form);
+      form.submit();
+
+      window.location.replace("../loggedin.html");
+    }
+
+	</script>
+</div>
+</div>
+</div>
+</body>
+</html>

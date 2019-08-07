@@ -1,0 +1,33 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Storing Values</title>
+</head>
+<body>
+<%@ page import ="java.sql.*" %>
+<%@ page import ="javax.sql.*" %>
+<%
+String fname=request.getParameter("fname"); 
+String lname=request.getParameter("lname"); 
+int age=Integer.parseInt(request.getParameter("age"));
+String city=request.getParameter("city");
+String email=request.getParameter("email");
+String password=request.getParameter("password");
+Class.forName("com.mysql.jdbc.Driver"); 
+//java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/resort","root","root");
+java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_67afe246cac0b0e","b4d5208a9c7e1d","25e6a1be");
+//mysql://b4d5208a9c7e1d:25e6a1be@us-cdbr-iron-east-03.cleardb.net/heroku_67afe246cac0b0e?reconnect=true
+Statement st= con.createStatement(); 
+ResultSet rs; 
+//int i=st.executeUpdate("insert into details1 values ('"+fname+"','"+lname+"','"+city+"','"+age+"','"+email+"')");  //order of parameters in form and insert should be same
+int i=st.executeUpdate("insert into details values ('"+fname+"','"+lname+"','"+city+"','"+age+"','"+email+"','"+password+"')");  //order of parameters in form and insert should be same
+out.println("Registered"); 
+
+
+%>
+       
+</body>
+</html>

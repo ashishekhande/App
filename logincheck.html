@@ -1,0 +1,38 @@
+
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<%@ page import="java.sql.*"%>
+<%@ page import="javax.sql.*"%>
+<%
+String login_email=request.getParameter("login_email");
+session.putValue("login_email",login_email);
+String lpass=request.getParameter("lpass");
+session.putValue("lpass",lpass);
+
+Class.forName("com.mysql.jdbc.Driver"); 
+java.sql.Connection con = DriverManager.getConnection("jdbc:mysql://us-cdbr-iron-east-03.cleardb.net/heroku_67afe246cac0b0e","b4d5208a9c7e1d","25e6a1be"); 
+Statement st= con.createStatement(); 
+ResultSet rs=st.executeQuery("SELECT * FROM details WHERE email='"+login_email+"'"); 
+if(rs.next()) 
+{ 
+if(rs.getString(6).equals(lpass)) 
+{ 
+out.println("welcome "+login_email); 
+} 
+else 
+{ 
+out.println("Invalid password try again"); 
+}  
+}
+%>
+
+</body>
+</html>
